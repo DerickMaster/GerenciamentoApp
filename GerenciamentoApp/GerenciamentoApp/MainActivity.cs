@@ -15,6 +15,14 @@ namespace GerenciamentoApp
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+
+            Button openNamesList = FindViewById<Button>(Resource.Id.button_addnames);
+
+            openNamesList.Click += delegate
+            {
+                StartActivity(typeof(ListViewActivity));
+            };
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
