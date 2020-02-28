@@ -19,9 +19,21 @@ namespace GerenciamentoApp
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
+            // Set our view from the "ListView" layout resource
             SetContentView(Resource.Layout.activity_listview);
 
+            // Set our buttons from the "ListView" layout resource
+            Button backButton = FindViewById<Button>(Resource.Id.button_back);
+            Button searchButton = FindViewById<Button>(Resource.Id.button_search);
+            
+            // Set our Click
+            backButton.Click += BackButton_Click;
+
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Finish();
         }
     }
 }

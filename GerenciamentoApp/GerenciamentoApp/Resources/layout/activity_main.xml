@@ -17,8 +17,7 @@
         android:layout_width="179.0dp"
         android:layout_height="wrap_content"
         android:id="@+id/button_showlist"
-        android:layout_gravity="center"
-        android:foregroundInsidePadding="true" />
+        android:layout_gravity="center" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"

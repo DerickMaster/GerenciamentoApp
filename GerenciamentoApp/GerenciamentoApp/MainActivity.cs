@@ -3,6 +3,7 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
+using Android.Content;
 
 namespace GerenciamentoApp
 {
@@ -13,17 +14,37 @@ namespace GerenciamentoApp
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            Button openNamesList = FindViewById<Button>(Resource.Id.button_addnames);
+            // Set our buttons from the "main" layout resource
+            Button addButton = FindViewById<Button>(Resource.Id.button_addnames);
+            Button removeButton = FindViewById<Button>(Resource.Id.button_removenames);
+            Button showListButton = FindViewById<Button>(Resource.Id.button_showlist);
 
-            openNamesList.Click += delegate
-            {
-                StartActivity(typeof(ListViewActivity));
-            };
+            // Set click functions from the buttons
+            addButton.Click += AddButton_Click;
+            removeButton.Click += RemoveButton_Click;
+            showListButton.Click += ShowListButton_Click;
 
         }
+
+        private void ShowListButton_Click(object sender, System.EventArgs e)
+        {
+            StartActivity(typeof(ListViewActivity));
+        }
+
+        private void RemoveButton_Click(object sender, System.EventArgs e)
+        {
+            StartActivity(typeof(MainActivity));
+        }
+
+        private void AddButton_Click(object sender, System.EventArgs e)
+        {
+            StartActivity(typeof(MainActivity));
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

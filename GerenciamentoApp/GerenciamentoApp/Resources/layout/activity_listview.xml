@@ -14,14 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout2">
-        <TextView
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+        <EditText
+            android:layout_width="212.0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/editText1" />
+        <Button
+            android:text="Procurar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/textView1" />
+            android:id="@+id/button_search" />
         <Button
-            android:text="Back"
+            android:text="Volta"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/button_back"
