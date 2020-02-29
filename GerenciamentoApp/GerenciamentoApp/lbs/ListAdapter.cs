@@ -51,7 +51,7 @@ namespace GerenciamentoApp.lbs
 
             if (listLine == null)
             {
-                listLine = LayoutInflater.From(appListContext).Inflate(Resource.Layout.model_expandableListItemLayout, null, false);
+                listLine = LayoutInflater.From(appListContext).Inflate(Resource.Layout.model_list, null, false);
             }
 
             TextView itemTextName = listLine.FindViewById<TextView>(Resource.Id.text_personName);

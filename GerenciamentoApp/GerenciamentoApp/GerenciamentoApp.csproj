@@ -124,17 +124,17 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\models_layout\model_list.xml">
+    <AndroidResource Include="Resources\layout\model_list.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\models_layout\model_expandableHeader.xml">
+    <AndroidResource Include="Resources\layout\model_expandableHeader.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\models_layout\model_expandableListItem.xml">
+    <AndroidResource Include="Resources\layout\model_expandableListItem.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
