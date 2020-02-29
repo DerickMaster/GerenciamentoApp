@@ -48,7 +48,7 @@ namespace GerenciamentoApp.lbs
         {
             string childText = (string)GetChild(groupPosition, childPosition);
             if (convertView == null){
-                convertView = listContext.LayoutInflater.Inflate(Resource.Layout.model_expandableList);
+                convertView = listContext.LayoutInflater.Inflate(Resource.Layout.model_expandableListItem, null);
             }
 
             TextView expListChild = convertView.FindViewById<TextView>(Resource.Id.exTextView_listItem);
@@ -84,7 +84,7 @@ namespace GerenciamentoApp.lbs
         {
             string listHeaderTitle = (string)GetGroup(groupPosition);
 
-            convertView = convertView ?? listContext.LayoutInflater.Inflate(Resource.Layout.model_expandibleListHeader, null);
+            convertView = convertView ?? listContext.LayoutInflater.Inflate(Resource.Layout.model_expandableHeader, null);
             var expListHeader = convertView.FindViewById<TextView>(Resource.Id.exTextView_listHeader);
             expListHeader.Text = listHeaderTitle;
 
