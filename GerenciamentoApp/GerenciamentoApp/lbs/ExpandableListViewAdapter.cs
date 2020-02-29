@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace GerenciamentoApp.lbs
 {
-    class ExpandableListViewAdapter : BaseExpandableListAdapter;
+    class ExpandableListViewAdapter : BaseExpandableListAdapter
     {
 
         /*
@@ -24,7 +24,6 @@ namespace GerenciamentoApp.lbs
         private List<string> listDataHeader;
         private Dictionary<string, List<string>> listChildData;
 
-        //  Start our class functions bellow
 
         //  ExpandableListViewAdapter function write the source objects into the class
         public ExpandableListViewAdapter(Activity _listContext, List<string> _listDataHeader, Dictionary<System.String, List<string>> _listChildData)
@@ -34,7 +33,7 @@ namespace GerenciamentoApp.lbs
             listChildData = _listChildData;
         }
 
-        // GetChild, GetChildID and Get Child View refeers to the child item view of the list
+        // For refeers to the child itens of the list
         public override Java.Lang.Object GetChild(int groupPosition, int childPosition)
         {
             return listChildData[listDataHeader[groupPosition]][childPosition];
@@ -49,17 +48,59 @@ namespace GerenciamentoApp.lbs
         {
             string childText = (string)GetChild(groupPosition, childPosition);
             if (convertView == null){
-                convertView = listContext.LayoutInflater.Inflate(Resource.Layout.model_expandableListLayout);
+                convertView = listContext.LayoutInflater.Inflate(Resource.Layout.model_expandableList);
             }
 
             TextView expListChild = convertView.FindViewById<TextView>(Resource.Id.exTextView_listItem);
             expListChild.Text = childText;
-            return convertView
-
+            return convertView;
+        }
+       
+        public override int GetChildrenCount(int groupPosition)
+        {
+            return listChildData[listDataHeader[groupPosition]].Count;
         }
 
+        /*
+        *
+        */
 
+        public override Java.Lang.Object GetGroup(int groupPosition)
+        {
+            return listDataHeader[groupPosition];
+        }
 
+        public override int GroupCount
+        {
+            get { return listDataHeader.Count; }
+        }
 
+        public override long GetGroupId(int groupPosition)
+        {
+            return groupPosition;
+        }
+
+        public override View GetGroupView(int groupPosition, bool isExpanded, View convertView, ViewGroup parent)
+        {
+            string listHeaderTitle = (string)GetGroup(groupPosition);
+
+            convertView = convertView ?? listContext.LayoutInflater.Inflate(Resource.Layout.model_expandibleListHeader, null);
+            var expListHeader = convertView.FindViewById<TextView>(Resource.Id.exTextView_listHeader);
+            expListHeader.Text = listHeaderTitle;
+
+            return convertView;
+        }
+
+        public override bool HasStableIds
+        {
+            get { return false; }
+        }
+
+        public override bool IsChildSelectable(int groupPosition, int childPosition)
+        {
+            return true;
+        }
+
+        class ViewholderItem : Java.Lang.Object{}
     }
 }
