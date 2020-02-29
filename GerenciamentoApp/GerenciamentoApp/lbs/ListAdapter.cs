@@ -45,14 +45,13 @@ namespace GerenciamentoApp.lbs
             get { return appList[position]; }
         }
 
-
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View listLine = convertView;
 
             if (listLine == null)
             {
-                listLine = LayoutInflater.From(appListContext).Inflate(Resource.Layout.model_list, null, false);
+                listLine = LayoutInflater.From(appListContext).Inflate(Resource.Layout.model_expandableListItemLayout, null, false);
             }
 
             TextView itemTextName = listLine.FindViewById<TextView>(Resource.Id.text_personName);
@@ -60,6 +59,8 @@ namespace GerenciamentoApp.lbs
 
             return listLine;
         }
+
+        
 
     }
 }

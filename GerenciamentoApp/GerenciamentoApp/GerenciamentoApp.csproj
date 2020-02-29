@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNameActivity.cs" />
+    <Compile Include="lbs\ExpandableListViewAdapter.cs" />
     <Compile Include="lbs\ListAdapter.cs" />
     <Compile Include="ListViewActivity.cs" />
     <Compile Include="MainActivity.cs" />
@@ -123,7 +124,17 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\model_list.xml">
+    <AndroidResource Include="Resources\layout\models_layout\model_list.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\models_layout\model_expandableHeaderLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\models_layout\model_expandableListItemLayout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
