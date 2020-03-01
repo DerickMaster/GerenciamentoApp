@@ -81,41 +81,21 @@ namespace GerenciamentoApp
         {
             listDataHeader = new List<string>();
             listDataChild = new Dictionary<string, List<string>>();
-
-            // Adding child data
+            
             listDataHeader.Add("Sueninha Fofa");
             listDataHeader.Add("Electrocs & comm.");
             listDataHeader.Add("Mechanical");
 
-            // Adding child data
+           //     Adding child data
             var lstCS = new List<string>();
-            lstCS.Add("Baixinha");
-            lstCS.Add("Cabelo Longo");
-            lstCS.Add("Gotosa");
-            lstCS.Add("Inteligente");
-            lstCS.Add("Bonita");
-            lstCS.Add("Interessante");
-
             var lstEC = new List<string>();
-            lstEC.Add("Field Theory");
-            lstEC.Add("Logic Design");
-            lstEC.Add("Analog electronics");
-            lstEC.Add("Network analysis");
-            lstEC.Add("Micro controller");
-            lstEC.Add("Signals and system");
-
             var lstMech = new List<string>();
-            lstMech.Add("Instrumentation technology");
-            lstMech.Add("Dynamics of machinnes");
-            lstMech.Add("Energy engineering");
-            lstMech.Add("Design of machine");
-            lstMech.Add("Turbo machine");
-            lstMech.Add("Energy conversion");
 
-            // Header, Child data
+            //    Header, Child data
             listDataChild.Add(listDataHeader[0], lstCS);
             listDataChild.Add(listDataHeader[1], lstEC);
             listDataChild.Add(listDataHeader[2], lstMech);
+            
         }
 
 
