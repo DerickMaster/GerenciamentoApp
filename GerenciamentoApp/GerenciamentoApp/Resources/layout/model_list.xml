@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+    <EditText
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_height="wrap_content"
@@ -12,6 +12,7 @@
         android:id="@+id/text_personName"
         android:layout_width="match_parent"
         android:paddingBottom="10px"
+        android:hint="sexoanal"
         android:paddingTop="10px" />
 
 </LinearLayout>

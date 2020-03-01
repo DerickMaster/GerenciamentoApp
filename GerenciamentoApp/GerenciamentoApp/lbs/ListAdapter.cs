@@ -54,7 +54,7 @@ namespace GerenciamentoApp.lbs
                 listLine = LayoutInflater.From(appListContext).Inflate(Resource.Layout.model_list, null, false);
             }
 
-            TextView itemTextName = listLine.FindViewById<TextView>(Resource.Id.text_personName);
+            EditText itemTextName = listLine.FindViewById<EditText>(Resource.Id.editText_register);
             itemTextName.Text = appList[position];
 
             return listLine;

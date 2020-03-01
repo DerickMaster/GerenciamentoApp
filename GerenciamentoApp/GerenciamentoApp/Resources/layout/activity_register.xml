@@ -2,15 +2,55 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:minWidth="25px"
-    android:minHeight="25px"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/linearLayout1" >
-    <ExpandableListView
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="49.5dp"
+        android:id="@+id/linearLayout3" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="176.5dp"
+        android:id="@+id/linearLayout1"
+        android:layout_gravity="center|bottom">
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="116.5dp"
+            android:id="@+id/imageView1" />
+        <TextView
+            android:text="Tela de Cadastro"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView1"
+            android:layout_marginBottom="0.0dp"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/expandableListView1" />
+        android:id="@+id/linearLayout2"
+        android:layout_marginTop="9.0dp">
+        <ListView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/editText_registerPlaceHolder"
+            android:paddingRight="10px"
+            android:paddingLeft="10px" />
+    </LinearLayout>
+
 </LinearLayout>
