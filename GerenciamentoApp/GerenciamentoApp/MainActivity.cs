@@ -10,10 +10,16 @@ namespace GerenciamentoApp
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+
+        lbs.ConnectionOperations srvConnection = new lbs.ConnectionOperations();
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
+            // Connection Methods
+            srvConnection.OpenConnection();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
@@ -29,6 +35,12 @@ namespace GerenciamentoApp
             showListButton.Click += ShowListButton_Click;
 
         }
+
+        /*
+         *  ShowListButton_Click
+         *  RemoveButton_Click
+         *  AddButton_Click
+         */
 
         private void ShowListButton_Click(object sender, System.EventArgs e)
         {

@@ -18,7 +18,7 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="wrap_content"
-        android:layout_height="176.5dp"
+        android:layout_height="wrap_content"
         android:id="@+id/linearLayout1"
         android:layout_gravity="center|bottom">
         <ImageView
@@ -30,7 +30,7 @@
             android:text="Tela de Cadastro"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/textView1"
             android:layout_marginBottom="0.0dp"
             android:layout_gravity="bottom" />
@@ -40,17 +40,35 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linearLayout2"
-        android:layout_marginTop="9.0dp">
-        <ListView
-            android:minWidth="25px"
-            android:minHeight="25px"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout4"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/editText_registerPlaceHolder"
-            android:paddingRight="10px"
-            android:paddingLeft="10px" />
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            android:id="@+id/editText_name" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cpf"
+            android:id="@+id/editText_cpf" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Data de Nascimento"
+            android:id="@+id/editText_birthDate" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefone () 9 9999-9999"
+            android:id="@+id/editText_cellPhone" />
+        <ImageButton
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton1" />
     </LinearLayout>
 
 </LinearLayout>
