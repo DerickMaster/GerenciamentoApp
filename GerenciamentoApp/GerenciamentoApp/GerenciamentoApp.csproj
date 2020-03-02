@@ -66,6 +66,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditActivity.cs" />
     <Compile Include="RegisterActivity.cs" />
     <Compile Include="lbs\ConnectionOperations.cs" />
     <Compile Include="lbs\DatabaseOperations.cs" />
@@ -144,6 +145,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_register.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_edit.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

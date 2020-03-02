@@ -44,6 +44,7 @@ namespace GerenciamentoApp
             // Set our objects from the "ListView" layout
             // Button backButton = FindViewById<Button>(Resource.Id.button_back);
             Button searchButton = FindViewById<Button>(Resource.Id.button_search);
+            
 
             expListView = FindViewById<ExpandableListView>(Resource.Id.exlistview_register);
 
@@ -58,7 +59,7 @@ namespace GerenciamentoApp
 
             FnClickEvents();
 
-
+            //searchButton.Click += SearchButton_Click;
 
         }
 
@@ -91,7 +92,54 @@ namespace GerenciamentoApp
                 Toast.MakeText(this, "group collapsed", ToastLength.Short).Show();
             };
         }
+        /*
+        public List<string> CpfFinderTable(int i)
+        {
+            EditText cpfFinder = FindViewById<EditText>(Resource.Id.editText_cpfFinder);
+            int cpfFinderIndex;
+            for (int i = 0; i < srvDatabase.numberOfRows(tableName); i++)
+            {
+                if (cpfFinder.Text == tableItens[i][1])
+                {
+                    Intent myIntent = new Intent(this, EditActivity);
+                    cpfFinderIndex = i;
+                    myIntent.PutExtra("cpfFinderIndex", i);
+                    StartActivity(typeof(EditActivity));
+                }
+                else
+                {
+                    Toast.MakeText(Application.Context, "Cpf não encontrado", ToastLength.Long).Show();
+                }
+            }
+            List<string> cpfFinderTable = new List<string>();
+            cpfFinderTable.Add(tableItens[i][0]);
+            cpfFinderTable.Add(tableItens[i][1]);
+            cpfFinderTable.Add(tableItens[i][2]);
+            cpfFinderTable.Add(tableItens[i][3]);
+            cpfFinderTable.Add(tableItens[i][4]);
+            cpfFinderTable.Add(tableItens[i][5]);
 
+            return cpfFinderTable;
+        }
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+
+            EditText cpfFinder = FindViewById<EditText>(Resource.Id.editText_cpfFinder);
+            for (int i = 0; i < srvDatabase.numberOfRows(tableName); i++)
+            {
+                if (cpfFinder.Text == tableItens[i][1])
+                {
+                    cpfFinderResult.cpfFinderIndex = i
+                    StartActivity(typeof(EditActivity));
+                }
+                else
+                {
+                    Toast.MakeText(Application.Context, "Cpf não encontrado", ToastLength.Long).Show();
+                }
+            }
+
+        }
+        */
         private void GetListData()
         {
             listDataChild = new Dictionary<string, List<string>>();
@@ -120,6 +168,9 @@ namespace GerenciamentoApp
                 listDataChild.Add(listDataHeader[counter], childData);
                 counter++;
             }
+
+
+
             
             
         }
