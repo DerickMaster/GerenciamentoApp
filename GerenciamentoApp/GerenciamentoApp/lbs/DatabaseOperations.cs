@@ -61,14 +61,14 @@ namespace GerenciamentoApp.lbs
 
             numberOfRow = numberOfRows(tableName);
 
-            cmdOperation = new MySqlCommand("SELECT name, ID, dateOfBirth, dateAndHour, cpf, cellphone FROM "+ tableName);
-            cmdOperation.Connection = sqlConnection;
-            cmdOperation.Connection.Open();
-            rdr = cmdOperation.ExecuteReader();
-            rdr.Read();
 
             while (counter < numberOfRow)
             {
+                cmdOperation = new MySqlCommand("SELECT name, ID, dateOfBirth, dateAndHour, cpf, cellphone FROM "+ tableName + " LIMIT " + counter + ", 1");
+                cmdOperation.Connection = sqlConnection;
+                cmdOperation.Connection.Open();
+                rdr = cmdOperation.ExecuteReader();
+                rdr.Read();
                 List<string> rowItens = new List<string>();
                 rowItens.Add(rdr["name"].ToString());
                 rowItens.Add(rdr["ID"].ToString());
@@ -80,6 +80,7 @@ namespace GerenciamentoApp.lbs
                 colPosition.Add(rowItens);
 
                 counter++;
+                cmdOperation.Connection.Close();
             }
             cmdOperation.Connection.Close();
             sqlConnection.Close();
