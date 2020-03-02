@@ -9,36 +9,31 @@ namespace GerenciamentoApp.lbs
     class ConnectionOperations
     {
 
-        //  Prepare the sqlServer Connection
-        private string connectionData = "SERVER=mysql873.umbler.com; DATABASE=register_app_db; UID=derickmaster; PWD=senhasenha123; PORT=41890";
-        private MySqlConnection sqlConnection = null;
-      
-        /*
-         * OpenConnection()     Tries to connect into the MySql server database
-         * CloseConnection()    Closes the connection into the MySql server database
-         */
-        public void OpenConnection()
+        public MySqlConnectionStringBuilder sqlBuilder = new MySqlConnectionStringBuilder();
+
+        public ConnectionOperations()
         {
-            try
-            {
-                sqlConnection = new MySqlConnection(connectionData);
-                sqlConnection.Open(); 
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(Application.Context, "ERROR:" + ex, ToastLength.Long).Show();
-            }
+            sqlBuilder.Server = "mysql873.umbler.com";
+            sqlBuilder.Database = "register_app_db";
+            sqlBuilder.Port = 41890;
+            sqlBuilder.UserID = "derickmaster";
+            sqlBuilder.Password = "senhasenha123";
         }
-        public void CloseConnection()
+
+        public void TryConnection()
         {
+
             try
             {
-                sqlConnection = new MySqlConnection(connectionData);
-                sqlConnection.Close();
+                MySqlConnection sqlConnection = new MySqlConnection(sqlBuilder.ToString());
+                sqlConnection.Open();
+                Toast.MakeText(Application.Context, "SUCESS", ToastLength.Long).Show();
+                //return true;
             }
             catch (Exception ex)
             {
-                Toast.MakeText(Application.Context, "ERROR:" + ex, ToastLength.Long).Show();
+                Toast.MakeText(Application.Context, "ERROR" + ex, ToastLength.Long).Show();
+                //return false;
             }
         }
     }

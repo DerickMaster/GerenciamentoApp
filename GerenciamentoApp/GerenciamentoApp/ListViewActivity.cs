@@ -15,6 +15,10 @@ namespace GerenciamentoApp
     [Activity(Label = "ListViewActivity")]
     public class ListViewActivity : Activity
     {
+        //connection aplications
+        lbs.ConnectionOperations srvConnection = new lbs.ConnectionOperations();
+        lbs.DatabaseOperations srvDatabase = new lbs.DatabaseOperations();
+
         // prepare the objects to be used in the layout
         lbs.ExpandableListViewAdapter listAdapter;
         ExpandableListView expListView;
@@ -31,6 +35,13 @@ namespace GerenciamentoApp
             // Set our objects from the "ListView" layout
             Button backButton = FindViewById<Button>(Resource.Id.button_back);
             Button searchButton = FindViewById<Button>(Resource.Id.button_search);
+
+            //
+            searchButton.Click += delegate
+            {
+                srvDatabase.CreateTable(null);
+            };
+            //
             expListView = FindViewById<ExpandableListView>(Resource.Id.exlistview_register);
 
             //  Prepare Events

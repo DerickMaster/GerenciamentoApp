@@ -11,15 +11,12 @@ namespace GerenciamentoApp
     public class MainActivity : AppCompatActivity
     {
 
-        lbs.ConnectionOperations srvConnection = new lbs.ConnectionOperations();
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             // Connection Methods
-            srvConnection.OpenConnection();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);

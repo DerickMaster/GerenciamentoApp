@@ -8,36 +8,42 @@ namespace GerenciamentoApp.lbs
 {
     class DatabaseOperations
     {
-
         //  Prepare the sqlServer Connection
-        public string connectionData = "SERVER=mysql873.umbler.com; DATABASE=register_app_db; UID=derickmaster; PWD=senhasenha123; PORT=41890";
-        public MySqlConnection sqlConnection = null;
+        ConnectionOperations srvConnection = new ConnectionOperations();
         public MySqlCommand cmdOperation = null;
-
-        public string sqlTableName;
-        public string sqlColName;
-        public List<string> sqlColsNames;
+        
 
         /*
          *  CreateTable() - Read the rows in a selected Col and returns it in a list
          *  receives : tabbleName
          */
-        public void CreateTable(string tabbleName)
+        public void CreateTable(string tableName)
         {
-            if (tabbleName == null)
+            string sqlServerPath = srvConnection.sqlBuilder.ToString();
+            MySqlConnection sqlConnection = new MySqlConnection(sqlServerPath);
+
+            if (tableName == null)
             {
-                tabbleName = "appTable_01";
+                
+                tableName = "lista_padrão";
             }
 
-            cmdOperation = new MySqlCommand("CREATE TABBLE " + tabbleName + " ( name VARCHAR[40] NOT NULL, cpf VARCHAR[15] NOT NULL, dateAndHour VARCHAR[20] NOT NULL, dateOfBirth VARCHAR[20] NOT NULL, cellphone VARCHAR[20] NOT NULL");
+            // send a "CREATE TABLE" query into the app MySql database
+            string sqlCommandLine = ("CREATE TABLE " + tableName + " ( name VARCHAR(40), cpf VARCHAR(15), dateAndHour VARCHAR(20), dateOfBirth VARCHAR(20), cellphone VARCHAR(20) );");
 
+            cmdOperation = new MySqlCommand(sqlCommandLine);
+            Toast.MakeText(Application.Context, "Table Created!", ToastLength.Long).Show();
             try
             {
+                cmdOperation.Connection = sqlConnection;
+                sqlConnection.Open();
                 cmdOperation.ExecuteReader();
+                cmdOperation.Connection.Close();
+                //Toast.MakeText(Application.Context, "pipoca gostosa", ToastLength.Long).Show();
             }
             catch (Exception ex)
             {
-                Toast.MakeText(Application.Context, "ERROR:" + ex, ToastLength.Long).Show();
+                //Toast.MakeText(Application.Context, "lllllkkkkkkkkkkkkkkkkkkkkkkkk:" + ex, ToastLength.Long).Show();
             }
         }
 
@@ -45,7 +51,7 @@ namespace GerenciamentoApp.lbs
          *  LoadRowsOfACol() - Read the rows in a selected Col and returns it in a list 
          *  Returns: A List with the col rows itens
          */
-        public List<List<string>> LoadRowsOfACol()
+        public List<List<string>> LoadRowsOfACol(string sqlColName, string sqlTableName)
         {
             cmdOperation = new MySqlCommand("SELECT" + sqlColName + " FROM " + sqlTableName);
 
