@@ -5,30 +5,30 @@
     android:minWidth="25px"
     android:minHeight="25px"
     android:layout_width="match_parent"
+    android:background = "#1f2130"
     android:layout_height="match_parent"
-    android:id="@+id/linearLayout1" >
+    android:id="@+id/linearLayout1">
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2">
-        <EditText
-            android:layout_width="212.0dp"
+        android:id="@+id/linearLayout2"
+        android:paddingLeft="20px"
+        android:paddingTop="50px">
+        <android.support.design.widget.TextInputEditText
+            android:hint = "cpf xxx.xxx.xx-yy"
+            android:layout_width="274.5dp"
             android:layout_height="match_parent"
-            android:id="@+id/editText1" />
+            android:id="@+id/textInputEditText1"/>
         <Button
             android:text="Procurar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/button_search" />
-        <Button
-            android:text="Volta"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/button_back"
-            android:layout_marginLeft="0.0dp" />
+            android:background = "@drawable/roudbutton"
+            android:id="@+id/button_search"
+            android:layout_marginTop="0.0dp" />
     </LinearLayout>
     <ExpandableListView
         android:minWidth="25px"

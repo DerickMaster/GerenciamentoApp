@@ -16,8 +16,8 @@ namespace GerenciamentoApp.lbs
     {
         public string name { get; set; }
         public string cpf { get; set; }
-        public string dateOfBirth { get; set; }
-        public string dateAndHour { get; set; }
+        public DateTime dateOfBirth { get; set; }
+        public DateTime dateAndHour { get; set; }
         public string cellphone { get; set; }
 
     }

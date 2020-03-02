@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp"
-    android:background="#fff69212">
+    android:background="#31ad54">
   <TextView
       android:id="@+id/exTextView_listHeader"
       android:layout_width="match_parent"

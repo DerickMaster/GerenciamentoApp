@@ -1,45 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:minWidth="25px"
-    android:minHeight="25px"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/linearLayout1">
+    android:minWidth="25px"
+    android:background = "#1f2130"
+    android:minHeight="25px">
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="match_parent"
         android:layout_height="205.0dp"
         android:id="@+id/imageView1" />
-    <Button
-        android:text="Mostrar Lista"
-        android:layout_width="179.0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_showlist"
-        android:layout_gravity="center" />
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="226.0dp"
+        android:id="@+id/linearLayout3" />
+    <Button
+        android:id="@+id/button_showlist"
+        android:text="Abrir Lista"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background = "@drawable/roudbutton"
+        android:layout_width="243.0dp"
+        android:layout_height="43.5dp"
+        android:layout_gravity="center"
+        android:shadowRadius="25" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:foregroundGravity="center"
-        android:gravity="center">
-        <Button
-            android:text="Adicionar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/button_addnames"
-            android:gravity="center"
-            android:foregroundGravity="center" />
-        <Button
-            android:text="Remover"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/button_removenames"
-            android:gravity="center"
-            android:foregroundGravity="center" />
-    </LinearLayout>
+        android:id="@+id/linearLayout1" />
+    <Button
+        android:id="@+id/button_addnames"
+        android:text="Registrar Nova Pessoa"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="243.0dp"
+        android:layout_height="43.5dp"
+        android:background = "@drawable/roudbutton"
+        android:layout_gravity="center"
+        android:shadowRadius="25" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2" />
+    <Button
+        android:id="@+id/button_removenames"
+         android:text="Configurações"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="243.0dp"
+        android:layout_height="43.5dp"
+        android:background = "@drawable/roudbutton"
+        android:layout_gravity="center"
+        android:shadowRadius="25" />
 </LinearLayout>

@@ -30,18 +30,15 @@ namespace GerenciamentoApp
         {
             base.OnCreate(savedInstanceState);
 
+            // If doesn't exist, creates a default table to be acessed by the listView
+            srvDatabase.CreateTable(null);
+
             SetContentView(Resource.Layout.activity_listview);
 
             // Set our objects from the "ListView" layout
-            Button backButton = FindViewById<Button>(Resource.Id.button_back);
+            // Button backButton = FindViewById<Button>(Resource.Id.button_back);
             Button searchButton = FindViewById<Button>(Resource.Id.button_search);
 
-            //
-            searchButton.Click += delegate
-            {
-                srvDatabase.CreateTable(null);
-            };
-            //
             expListView = FindViewById<ExpandableListView>(Resource.Id.exlistview_register);
 
             //  Prepare Events
@@ -51,19 +48,16 @@ namespace GerenciamentoApp
             listAdapter = new lbs.ExpandableListViewAdapter(this, listDataHeader, listDataChild);
             expListView.SetAdapter(listAdapter);
 
-            //  Click Events
             FnClickEvents();
-            backButton.Click += BackButton_Click;
 
 
         }
 
         /*
-         *  GetListData()
+         *  GetListData()       Pick up the database list itens and put in the expandable ListView
          *  
          *  FnClickEvents()     Open and Close the lists
-         *  BackButton_Click    Go back to the main layout
-         *  searchButton_Click  Searches for a list item writed in the textEditor
+         *  searchButton_Click  Searches for a "cpf" item writed in the textEditor
          */
 
         private void FnClickEvents()
@@ -93,10 +87,12 @@ namespace GerenciamentoApp
         {
             listDataHeader = new List<string>();
             listDataChild = new Dictionary<string, List<string>>();
-            
-            listDataHeader.Add("Sueninha Fofa");
-            listDataHeader.Add("Electrocs & comm.");
-            listDataHeader.Add("Mechanical");
+            int couter = 0;
+
+            while (couter <= 4)
+            {
+
+            }
 
            //     Adding child data
             var lstCS = new List<string>();
@@ -108,12 +104,6 @@ namespace GerenciamentoApp
             listDataChild.Add(listDataHeader[1], lstEC);
             listDataChild.Add(listDataHeader[2], lstMech);
             
-        }
-
-
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            this.Finish();
         }
     }
 }

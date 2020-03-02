@@ -74,6 +74,7 @@
     <Compile Include="ListViewActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="RegisterActivity.cs" />
+    <Compile Include="RegistersActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -109,7 +110,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\values\style.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
@@ -126,11 +127,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_register.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_configurar.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -142,6 +138,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\model_expandableListItem.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\roudButton.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_registers.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

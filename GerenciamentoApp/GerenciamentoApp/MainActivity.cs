@@ -7,7 +7,7 @@ using Android.Content;
 
 namespace GerenciamentoApp
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/Theme.Design.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
 

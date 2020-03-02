@@ -25,11 +25,11 @@ namespace GerenciamentoApp.lbs
             if (tableName == null)
             {
                 
-                tableName = "lista_padrão";
+                tableName = "lista_default";
             }
 
             // send a "CREATE TABLE" query into the app MySql database
-            string sqlCommandLine = ("CREATE TABLE " + tableName + " ( name VARCHAR(40), cpf VARCHAR(15), dateAndHour VARCHAR(20), dateOfBirth VARCHAR(20), cellphone VARCHAR(20) );");
+            string sqlCommandLine = ("CREATE TABLE " + tableName + " ( name VARCHAR(40), cpf VARCHAR(15), dateAndHour DATETIME, dateOfBirth DATE, cellphone VARCHAR(20) );");
 
             cmdOperation = new MySqlCommand(sqlCommandLine);
             Toast.MakeText(Application.Context, "Table Created!", ToastLength.Long).Show();
@@ -39,11 +39,10 @@ namespace GerenciamentoApp.lbs
                 sqlConnection.Open();
                 cmdOperation.ExecuteReader();
                 cmdOperation.Connection.Close();
-                //Toast.MakeText(Application.Context, "pipoca gostosa", ToastLength.Long).Show();
             }
             catch (Exception ex)
             {
-                //Toast.MakeText(Application.Context, "lllllkkkkkkkkkkkkkkkkkkkkkkkk:" + ex, ToastLength.Long).Show();
+                Toast.MakeText(Application.Context, "ERROR:" + ex, ToastLength.Long).Show();
             }
         }
 
@@ -51,47 +50,34 @@ namespace GerenciamentoApp.lbs
          *  LoadRowsOfACol() - Read the rows in a selected Col and returns it in a list 
          *  Returns: A List with the col rows itens
          */
-        public List<List<string>> LoadRowsOfACol(string sqlColName, string sqlTableName)
+        public List<List<string>> LoadRowsOfACol(string sqlTableName)
         {
-            cmdOperation = new MySqlCommand("SELECT" + sqlColName + " FROM " + sqlTableName);
+            cmdOperation = new MySqlCommand("SELECT * FROM " + sqlTableName);
 
-            try
-            {
-                MySqlDataReader db_reader = null;
-                db_reader = cmdOperation.ExecuteReader();
-                List<List<string>> colLists = new List<List<string>>();
-                int counter = 0;
-
-                while (db_reader.Read())
-                {
-                    List<string> rowsList = new List<string>();
-                    TableItens colItems = new TableItens();
-
-                    colItems.name = db_reader["name"].ToString();
-                    colItems.cpf = db_reader["cpf"].ToString();
-                    colItems.dateOfBirth = db_reader["dateOfBirth"].ToString();
-                    colItems.dateAndHour = db_reader["dateAndHour"].ToString();
-                    colItems.cellphone = db_reader["cellphone"].ToString();
-
-                    rowsList.Add(colItems.name);
-                    rowsList.Add(colItems.cpf);
-                    rowsList.Add(colItems.dateOfBirth);
-                    rowsList.Add(colItems.dateAndHour);
-                    rowsList.Add(colItems.cellphone);
-
-                    colLists[counter] = rowsList;
-                    counter = counter + 1;
-                }
-
-                return colLists;
-
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(Application.Context, "ERROR:" + ex, ToastLength.Long).Show();
                 return null;
-            }
 
         }
+        //22/03/1999
+        public void RegisterIntoDatabase(TableItens itens, string tableName)
+        {
+            string sqlServerPath = srvConnection.sqlBuilder.ToString();
+            MySqlConnection sqlConnection = new MySqlConnection(sqlServerPath);
+
+            string sqlCommandString = ("INSERT INTO " + tableName + " (name, dateOfBirth, dateAndHour, cpf, cellphone) VALUES (" + itens.name+", "+itens.dateOfBirth+", "+itens.dateAndHour+", "+itens.cpf+ ", "+itens.cellphone+ " );");
+            cmdOperation = new MySqlCommand(sqlCommandString);
+            Toast.MakeText(Application.Context, "ENTRADA 2", ToastLength.Long).Show();
+            try
+            {
+                cmdOperation.Connection = sqlConnection;
+                sqlConnection.Open();
+                cmdOperation.ExecuteReader();
+                cmdOperation.Connection.Close();
+                Toast.MakeText(Application.Context, "Dados Inseridos com Sucesso", ToastLength.Long).Show();
+            }
+            catch (Exception ex){
+                Toast.MakeText(Application.Context, "ERROR:" + ex, ToastLength.Long).Show();
+            }
+        }
+
     }
 }
