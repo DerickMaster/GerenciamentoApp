@@ -110,7 +110,7 @@ namespace GerenciamentoApp
             
             counter = 0;
             //     Adding child data
-            while (counter < tableNumberOfRows-1)
+            while (counter < tableNumberOfRows)
             {
                 childData = new List<string>();
                 for (int i=0; i < 6; i++)
