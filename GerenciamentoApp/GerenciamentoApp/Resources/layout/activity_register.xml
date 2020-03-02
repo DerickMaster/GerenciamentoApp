@@ -1,39 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:minWidth="25px"
+    android:minHeight="25px"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minWidth="25px"
-    android:minHeight="25px">
+    android:background = "#1f2130"
+    android:id="@+id/linearLayout1">
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="49.5dp"
-        android:id="@+id/linearLayout3" />
-    <LinearLayout
-        android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1"
-        android:layout_gravity="center|bottom">
-        <ImageView
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="match_parent"
-            android:layout_height="116.5dp"
-            android:id="@+id/imageView1" />
+        android:id="@+id/linearLayout3"
+        android:layout_gravity="center">
         <TextView
-            android:text="Tela de Cadastro"
+            android:text="Lista de Cadastro"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="114.5dp"
             android:id="@+id/textView1"
-            android:layout_marginBottom="0.0dp"
-            android:layout_gravity="bottom" />
+            android:paddingTop="100px"
+            android:layout_gravity="center" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
@@ -41,13 +31,14 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout4"
+        android:id="@+id/linearLayout2"
+        android:layout_gravity="center"
         android:paddingLeft="50px"
         android:paddingRight="50px">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome"
+            android:hint="Nome e Sobrenome"
             android:id="@+id/editText_name" />
         <EditText
             android:layout_width="match_parent"
@@ -57,18 +48,38 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Data de Nascimento"
-            android:id="@+id/editText_birthDate" />
+            android:hint="Número do Telefone"
+            android:id="@+id/editText_cellphone" />
         <EditText
+            android:inputType="date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Telefone () 9 9999-9999"
-            android:id="@+id/editText_cellPhone" />
-        <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton1" />
+            android:hint="Data de Nascimento DD/MM/AAAA"
+            android:id="@+id/editText_birthDate" />
     </LinearLayout>
-
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout4">
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout6"
+        android:paddingRight="25px"
+        android:paddingLeft="25px">
+        <Button
+            android:text="Cadastrar"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background = "@drawable/roudbutton"
+            android:layout_width="match_parent"
+            android:layout_height="67.0dp"
+            android:id="@+id/button_register" />
+    </LinearLayout>
 </LinearLayout>

@@ -51,7 +51,7 @@ namespace GerenciamentoApp
 
         private void AddButton_Click(object sender, System.EventArgs e)
         {
-            StartActivity(typeof(AddNameActivity));
+            StartActivity(typeof(RegisterActivity));
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

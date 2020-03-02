@@ -66,15 +66,13 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddNameActivity.cs" />
+    <Compile Include="RegisterActivity.cs" />
     <Compile Include="lbs\ConnectionOperations.cs" />
     <Compile Include="lbs\DatabaseOperations.cs" />
     <Compile Include="lbs\ExpandableListViewAdapter.cs" />
     <Compile Include="lbs\TableItens.cs" />
     <Compile Include="ListViewActivity.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="RegisterActivity.cs" />
-    <Compile Include="RegistersActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -145,7 +143,7 @@
     <AndroidResource Include="Resources\drawable\roudButton.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_registers.xml">
+    <AndroidResource Include="Resources\layout\activity_register.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

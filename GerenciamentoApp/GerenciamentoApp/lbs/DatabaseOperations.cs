@@ -57,15 +57,17 @@ namespace GerenciamentoApp.lbs
                 return null;
 
         }
-        //22/03/1999
+
+        // RegisterIntoDatabase receives a Tabble of itens and the name of the 
         public void RegisterIntoDatabase(TableItens itens, string tableName)
         {
             string sqlServerPath = srvConnection.sqlBuilder.ToString();
             MySqlConnection sqlConnection = new MySqlConnection(sqlServerPath);
 
-            string sqlCommandString = ("INSERT INTO " + tableName + " (name, dateOfBirth, dateAndHour, cpf, cellphone) VALUES (" + itens.name+", "+itens.dateOfBirth+", "+itens.dateAndHour+", "+itens.cpf+ ", "+itens.cellphone+ " );");
+           
+            string sqlCommandString = ("INSERT INTO " + tableName + " ( name, dateOfBirth, dateAndHour, cpf, cellphone) VALUES ( \""+itens.name+"\", \""+itens.dateOfBirth.ToString("yyyy-MM-dd") + "\", \""+itens.dateAndHour.ToString("yyyy-MM-dd HH:mm:ss") +"\", \""+itens.cpf+ "\",  \""+itens.cellphone+"\" );");
             cmdOperation = new MySqlCommand(sqlCommandString);
-            Toast.MakeText(Application.Context, "ENTRADA 2", ToastLength.Long).Show();
+
             try
             {
                 cmdOperation.Connection = sqlConnection;
@@ -79,5 +81,11 @@ namespace GerenciamentoApp.lbs
             }
         }
 
+        public DateTime strintToDate(string birthDate)
+        {
+            DateTime oDate = DateTime.ParseExact(birthDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+            return oDate;
+        }
     }
 }
