@@ -15,6 +15,7 @@ namespace GerenciamentoApp
     [Activity(Label = "ListViewActivity")]
     public class ListViewActivity : Activity
     {
+
         //connection aplications
         lbs.ConnectionOperations srvConnection = new lbs.ConnectionOperations();
         lbs.DatabaseOperations srvDatabase = new lbs.DatabaseOperations();
@@ -22,9 +23,14 @@ namespace GerenciamentoApp
         // prepare the objects to be used in the layout
         lbs.ExpandableListViewAdapter listAdapter;
         ExpandableListView expListView;
-        List<string> listDataHeader;
+        List<string> listDataHeader = new List<string>();
+        List<List<string>> tableItens = new List<List<string>>();
+
+        string tableName = "lista_default";
+
         Dictionary<string, List<string>> listDataChild;
         int previousListGruop = -1;
+        private string newTableItem;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -48,7 +54,10 @@ namespace GerenciamentoApp
             listAdapter = new lbs.ExpandableListViewAdapter(this, listDataHeader, listDataChild);
             expListView.SetAdapter(listAdapter);
 
+            tableItens = srvDatabase.allTableItens(tableName);
+
             FnClickEvents();
+
 
 
         }
@@ -85,24 +94,33 @@ namespace GerenciamentoApp
 
         private void GetListData()
         {
-            listDataHeader = new List<string>();
             listDataChild = new Dictionary<string, List<string>>();
-            int couter = 0;
+            List<string> childData = new List<string>();
+            string insertTable;
+            tableItens = srvDatabase.allTableItens(tableName);
 
-            while (couter <= 4)
+            int tableNumberOfRows = srvDatabase.numberOfRows(tableName);
+            int counter = 0;
+
+            while (counter < tableNumberOfRows)
             {
-
+                listDataHeader.Add(tableItens[counter][0]);
+                counter++;
             }
-
-           //     Adding child data
-            var lstCS = new List<string>();
-            var lstEC = new List<string>();
-            var lstMech = new List<string>();
-
-            //    Header, Child data
-            listDataChild.Add(listDataHeader[0], lstCS);
-            listDataChild.Add(listDataHeader[1], lstEC);
-            listDataChild.Add(listDataHeader[2], lstMech);
+            
+            counter = 0;
+            //     Adding child data
+            while (counter < tableNumberOfRows-1)
+            {
+                childData = new List<string>();
+                for (int i=0; i < 6; i++)
+                {
+                    childData.Add(tableItens[counter][i]);
+                }
+                listDataChild.Add(listDataHeader[counter], childData);
+                counter++;
+            }
+            
             
         }
     }

@@ -54,7 +54,7 @@ namespace GerenciamentoApp
 
             try
             {
-                itensToRegister.dateOfBirth = srvDatabase.strintToDate(birthDate.Text);
+                itensToRegister.dateOfBirth = srvDatabase.stringToDate(birthDate.Text);
             }
             catch (Exception){
                 Toast.MakeText(Application.Context, "ERRO: Data digitada incorretamente", ToastLength.Long).Show();

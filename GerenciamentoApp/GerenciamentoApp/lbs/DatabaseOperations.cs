@@ -14,8 +14,7 @@ namespace GerenciamentoApp.lbs
         
 
         /*
-         *  CreateTable() - Read the rows in a selected Col and returns it in a list
-         *  receives : tabbleName
+         *  CreateTable() - Receives a table name and if it doesn't exist create it in the MySql database
          */
         public void CreateTable(string tableName)
         {
@@ -28,7 +27,6 @@ namespace GerenciamentoApp.lbs
                 tableName = "lista_default";
             }
 
-            // send a "CREATE TABLE" query into the app MySql database
             string sqlCommandLine = ("CREATE TABLE " + tableName + " ( name VARCHAR(40), cpf VARCHAR(15), dateAndHour DATETIME, dateOfBirth DATE, cellphone VARCHAR(20) );");
 
             cmdOperation = new MySqlCommand(sqlCommandLine);
@@ -47,18 +45,72 @@ namespace GerenciamentoApp.lbs
         }
 
         /*
-         *  LoadRowsOfACol() - Read the rows in a selected Col and returns it in a list 
-         *  Returns: A List with the col rows itens
+         *  allTableItens receiver a table name and create a portable table matriz
+         *  return: a table matriz with all table data
          */
-        public List<List<string>> LoadRowsOfACol(string sqlTableName)
+        public List<List<string>> allTableItens(string tableName)
         {
-            cmdOperation = new MySqlCommand("SELECT * FROM " + sqlTableName);
+            int numberOfRow;
+            int counter = 0;
+            string sqlServerPath = srvConnection.sqlBuilder.ToString();
+            List<List<string>> colPosition = new List<List<string>>();
+            
+            MySqlConnection sqlConnection = new MySqlConnection(sqlServerPath);
+            cmdOperation = new MySqlCommand("SELECT COUNT(*) FROM " + tableName);
+            MySqlDataReader rdr = null;
 
-                return null;
+            numberOfRow = numberOfRows(tableName);
 
+            cmdOperation = new MySqlCommand("SELECT name, ID, dateOfBirth, dateAndHour, cpf, cellphone FROM "+ tableName);
+            cmdOperation.Connection = sqlConnection;
+            cmdOperation.Connection.Open();
+            rdr = cmdOperation.ExecuteReader();
+            rdr.Read();
+
+            while (counter < numberOfRow)
+            {
+                List<string> rowItens = new List<string>();
+                rowItens.Add(rdr["name"].ToString());
+                rowItens.Add(rdr["ID"].ToString());
+                rowItens.Add(rdr["cpf"].ToString());
+                rowItens.Add(rdr["dateOfBirth"].ToString());
+                rowItens.Add(rdr["cellphone"].ToString());
+                rowItens.Add(rdr["dateAndHour"].ToString());
+
+                colPosition.Add(rowItens);
+
+                counter++;
+            }
+            cmdOperation.Connection.Close();
+            sqlConnection.Close();
+            return colPosition;
         }
 
-        // RegisterIntoDatabase receives a Tabble of itens and the name of the 
+        public int numberOfRows(string tableName)
+        {
+
+            string sqlServerPath = srvConnection.sqlBuilder.ToString();
+            List<List<string>> colPosition = new List<List<string>>();
+
+            cmdOperation = new MySqlCommand("SELECT * FROM " + tableName);
+            MySqlDataReader rdr = null;
+
+            using (MySqlConnection sqlConnection = new MySqlConnection(sqlServerPath))
+            {
+                using( cmdOperation = new MySqlCommand("SELECT COUNT(*) FROM " + tableName, sqlConnection))
+                {
+
+                    cmdOperation.Connection = sqlConnection;
+                    cmdOperation.Connection.Open();
+                    long count = (long)cmdOperation.ExecuteScalar();
+                    return (int)count;
+                }
+            }
+        }
+
+        /*
+         *  RegisterIntoDatabase() - Read a row of itens and write them in the specified tabbleNAme
+         */
         public void RegisterIntoDatabase(TableItens itens, string tableName)
         {
             string sqlServerPath = srvConnection.sqlBuilder.ToString();
@@ -81,7 +133,11 @@ namespace GerenciamentoApp.lbs
             }
         }
 
-        public DateTime strintToDate(string birthDate)
+        /*
+         *  stringToDate() - receives a string writed similar to the DateTime local culture
+         *  Returns: a DateTime formated in the local culture date
+         */
+        public DateTime stringToDate(string birthDate)
         {
             DateTime oDate = DateTime.ParseExact(birthDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
