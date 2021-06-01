@@ -1,2 +1,2 @@
 # GerenciamentoApp
-Aplicativo de Gerenciamento em NodeJs
+Aplicativo de Gerenciamento em Xamarin
